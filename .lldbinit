@@ -1,0 +1,35 @@
+# breakpoint shortcuts
+# break on function/method/selector: b -n name
+# break on C/C++ method: b -M method
+# break on selector: b -S selector:here:
+# break on address: b -a 0xfeedface
+command alias e expression
+command alias caflush expression (void)[CATransaction flush]
+command alias b breakpoint set
+command alias bd breakpoint disable
+command alias be breakpoint enable
+command alias bdel breakpoint delete
+command alias bcommand breakpoint command add
+command alias commands breakpoint command list
+
+# jump aliases
+# jump 0xfeedface
+command alias rr register read
+command alias jump register write pc
+command alias jmp register write pc
+command alias j register write pc
+
+# fix p/s
+# p/s rsi
+command alias p/s register read
+
+command alias return thread return
+
+command alias reveal_load_sim expr (void*)dlopen("/Applications/Reveal.app/Contents/SharedSupport/iOS-Libraries/RevealServer.framework/RevealServer", 0x2);
+command alias reveal_load_dev expr (void*)dlopen([(NSString*)[(NSBundle*)[NSBundle mainBundle] pathForResource:@"libReveal" ofType:@"dylib"] cStringUsingEncoding:0x4], 0x2);
+command alias reveal_start expr (void)[(NSNotificationCenter*)[NSNotificationCenter defaultCenter] postNotificationName:@"IBARevealRequestStart" object:nil];
+command alias reveal_stop expr (void)[(NSNotificationCenter*)[NSNotificationCenter defaultCenter] postNotificationName:@"IBARevealRequestStop" object:nil];
+
+command alias reveal_load_sim_swift expr dlopen("/Applications/Reveal.app/Contents/SharedSupport/iOS-Libraries/RevealServer.framework/RevealServer", 0x2)
+command alias reveal_start_swift expr NotificationCenter.default.post(name: "IBARevealRequestStart", object: nil)
+command alias reveal_stop_swift expr NotificationCenter.default.post(name: "IBARevealRequestStop", object: nil)
